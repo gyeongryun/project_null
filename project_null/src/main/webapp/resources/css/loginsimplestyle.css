@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body{
+	background-color: black;
+	/*
+	height: 100%;
+	*/
+}
+
+.main {
+    width: 350px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background-color: #808080;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.logo {
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+	.brand_logo_container {
+		position: absolute;
+		height: 170px;
+		width: 170px;
+		top: -75px;
+		border-radius: 50%;
+		background: #000000;
+		padding: 10px;
+		text-align: center;
+
+	}
+	.brand_logo {
+		height: 150px;
+		width: 150px;
+		border-radius: 50%;
+		border: 2px solid white;
+	}
+
+#login {
+    width: 100%;
+    background-color: skyblue;
+    border-color: transparent;
+    color: white;
+}
+
+.account {
+    display: block;
+    margin-bottom: 3px;
+    padding: 3px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+#alert {
+    border-color: transparent;
+}
