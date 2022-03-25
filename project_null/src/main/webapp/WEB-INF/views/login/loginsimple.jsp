@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>NULL 로그인 페이지</title>
-<link rel = "stylesheet" href = "/resources/css/loginsimplestyle.css?dfhdhdhfdhfds3">
+<link rel = "stylesheet" href = "/resources/css/loginsimplestyle.css?123">
 </head>
 <body>
 
