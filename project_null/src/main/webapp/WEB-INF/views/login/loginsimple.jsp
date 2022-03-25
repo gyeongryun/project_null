@@ -23,6 +23,9 @@
             <input type="password" placeholder="부서" id="password" class="account">
             <button id="login" class="account">login</button>
             <p id="alert" class="account"> </p>
+			<a href="/login/loginpage">
+				<input type="button" value="완성 로그인 페이지로 이동">
+			</a>
         </div>
     </div>   
     <script src="script.js"></script>

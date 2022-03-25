@@ -17,8 +17,13 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class  LoginController {
 
-	@GetMapping("/loginpage") //주소창
+	@GetMapping("/login") //주소창
 	public String login() {
+		
+		return "/login/loginpage"; //파일경로
+	}
+	@GetMapping("/loginpage") //주소창
+	public String loginpage() {
 		
 		return "/login/loginpage"; //파일경로
 	}
