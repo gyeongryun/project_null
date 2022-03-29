@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="../includes/header.jsp"%>
+<%@ include file="../includes/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -36,7 +36,6 @@
 			</tbody>
 		</table>
 	</div> --%>
-	<h1>직원 목록</h1>
 	<div class="card-body">
 		<table class="table table-bordered" id="dataTable">
 			<thead>
@@ -69,7 +68,7 @@
 		</table>
 
 	</div>
-<!-- 	<div class="card-body">
+	<div class="card-body">
 		<table class="table table-bordered" id="dataTable">
 			<thead>
 				<tr>
@@ -111,7 +110,7 @@
 			</tbody>
 		</table>
 
-	</div> -->
+	</div>
 
 
 

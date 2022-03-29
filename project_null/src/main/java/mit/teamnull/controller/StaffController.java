@@ -13,7 +13,7 @@ import mit.teamnull.domain.StaffVO;
 import mit.teamnull.service.StaffService;
 
 @Log4j
-@RequestMapping("/Staff/*")
+@RequestMapping("/staff/*")
 @AllArgsConstructor
 @Controller
 public class StaffController {
@@ -29,5 +29,15 @@ public class StaffController {
 		}
 		md.addAttribute("list", service.list());
 		return "/login/stafflist";
+	}
+	@GetMapping("/stafflist2")
+	public String registerMainGet2(StaffVO vo, Model md) {
+		log.info("페이지 접속");
+		List<StaffVO> aa = service.list();
+		for (StaffVO temp : aa) {
+			log.info("가져오긴함:" + aa);
+		}
+		md.addAttribute("list", service.list());
+		return "/login/stafflist2";
 	}
 }
