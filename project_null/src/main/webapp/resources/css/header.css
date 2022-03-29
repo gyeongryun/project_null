@@ -1,6 +1,8 @@
+/* 상단바  */
 header {
 	height: 180px;
-	position: sticky;
+	right: 0px;left: 0px;
+	position: fixed;
 	top: 0;
 	opacity: 0.8;
 	backdrop-filter: blur(30px);
@@ -11,6 +13,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	z-index: 5;
 }
 
 main {
@@ -20,13 +23,23 @@ main {
 ul {
 	list-style-type: none;
 	padding: 0;
+	line-height: 200%;
 }
+ul a {
+	color: #FFFFFF;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 18px;
+}
+
 
 li {
 	display: inline-block;
 	margin-left: 16px;
 	font-size: 18px;
 	font-weight: bold;
+	line-height: 200%;
 }
 
 li a {
@@ -45,4 +58,139 @@ li a:hover {
 html {
 	height: 200%;
 	line-height: 1.6;
+}
+/* 상단바 끝  */
+
+/* 구글 아이콘 */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+/* 구글 아이콘 끝 */
+
+/* 아이콘 없이 움직이는 메뉴버튼 */
+input#menuicon{
+    display: none;
+}
+input#menuicon + label{
+    display: block;
+    width: 60px;
+    height: 40px;
+    position: fixed;
+    left: 10px;
+    bottom: 20px;
+    cursor:pointer;
+    z-index: 5;
+}
+input#menuicon + label span{
+    display: block;
+    position: absolute;
+    width:100%;
+    height: 5px;
+    border-radius: 30px;
+    background: #111;
+    transition: all 0.5s;
+}
+input#menuicon + label span:nth-child(1){
+    top: 0;
+}
+input#menuicon + label span:nth-child(2){
+    top: 50%;
+    transform: translateY(-50%);
+}
+input#menuicon + label span:nth-child(3){
+    bottom: 0;
+}
+input#menuicon:checked + label span:nth-child(1){
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+input#menuicon:checked + label span:nth-child(2){
+    opacity: 0;
+}
+input#menuicon:checked + label span:nth-child(3){
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+} 
+/* 메뉴아이콘 끝 */
+
+/* 메뉴아이콘 주변 원 배경 */
+.circle {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color:#86efef;
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+    text-align: center;
+}
+input#menuicon:checked ~ .circle{
+    left: 238px;
+}
+/* 메뉴아이콘 원 배경 끝 */
+
+/* 사이드바 */
+div.sidebar{
+	margin-top:180px;
+    width: 250px;
+    height: 100%;
+    background: #555;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    z-index:1;
+    transform: all .35s;
+}
+#sidemenu{
+
+}
+
+input#menuicon:checked + label + div{
+    left: 0;
+}
+input#menuicon:checked + label{
+    z-index: 5;
+    left: 250px;
+}
+/* 사이드바 끝 */
+
+body{
+	margin-top:240px;
+	margin-left:350px;
+}
+input#menuicon:checked ~ body{
+
 }

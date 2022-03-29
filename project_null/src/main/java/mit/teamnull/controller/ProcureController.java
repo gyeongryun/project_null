@@ -14,35 +14,21 @@ import mit.teamnull.service.StaffService;
 
 @Controller
 @Log4j
-@RequestMapping("/includes/*")
+@RequestMapping("/procure/*")
 @AllArgsConstructor
+public class ProcureController {
 
-public class IncludesController {
-	@GetMapping("/header")
-	public String iheader() {
+//	@GetMapping("/login") //주소창
+//	public String login() {
+//		
+//		return "/login/loginpage"; //파일경로
+//	}
+	
+	@GetMapping("/home")
+	public String loginpage() {
 
-		return "/includes/header";
+		return "/procurement/procure_home";
 	}
-	@GetMapping("/header2")
-	public String iheader2() {
-		
-		return "/includes/header2";
-	}
-	
-	@GetMapping("/sidebar")
-	public String isidebar() {
-		
-		return "/includes/sidebar";
-	}
-	@GetMapping("/sidebar2")
-	public String isidebar2() {
-		
-		return "/includes/sidebar2";
-	}
-	
-	@GetMapping("/footer")
-	public String ifooter() {
-		
-		return "/includes/footer";
-	}
+
+
 }
