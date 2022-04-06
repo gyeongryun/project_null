@@ -17,9 +17,9 @@ import mit.teamnull.service.PartnerService;
 
 @Controller
 @Log4j
-@RequestMapping("/procure/*")
+@RequestMapping("/partner/*")
 @AllArgsConstructor
-public class ProcureController {
+public class PartnerController {
 	
 	public PartnerService service;
 //	@GetMapping("/login") //주소창
@@ -28,14 +28,7 @@ public class ProcureController {
 //		return "/login/loginpage"; //파일경로
 //	}
 	
-	// 사실상 홈페이지
-	@GetMapping("/home")
-	public String loginpage() {
-		
-		return "/procure_home";
-	}
 	
-	//협력사 목록 페이지
 	@GetMapping("/partner")
 	public String partner(PartnerVO vo, Model md) {
 		
@@ -43,7 +36,6 @@ public class ProcureController {
 		return "/procure/procure_partner";
 	}
 	
-	//수정 페이지
 	@GetMapping("/modify")
 	public String modify(PartnerVO vo, Model md) {
 		
@@ -51,32 +43,34 @@ public class ProcureController {
 		return "/procure/procure_partner_modify";
 	}
 	
+
+    @GetMapping("/list")
+    // => @RequestMapping(value="list", method=RequestMethod.GET)
+    public void boardListGET() {
+        
+        log.info("게시판 목록 페이지 진입");
+        
+    }
+    
 	//글등록 화면 열기
 	@GetMapping("/register")
 	public String register() {
 		log.info("글 등록 화면 요청");
 		// -> board/register.jsp
-		return "/procure/procure_partner_register";
+		return "/procurement/procure_partner_register";
 	}
-
+	
 	@PostMapping("/register")
 	public String register(PartnerVO vo, RedirectAttributes rttr) {
 		log.info("register 요청");
 		//글등록
 		service.register(vo);
-		log.info("등록된 회사 이름은"+ vo.getPart_name());
+		log.info("등록된 글번호는"+ vo.getPart_name());
 		//rttr.addAttribute("bno", board.getBno());
 		rttr.addFlashAttribute("result", vo.getPart_name());
-		//글목록 보기 보여주기
 		return "redirect:/procure/procure_partner_register";
 	
-	}
-	
-	@GetMapping("/iteminfo")
-	public String iteminfo() {
-
-		return "/procure/item/iteminfo";
-	}
-	
+        
+    }
 
 }

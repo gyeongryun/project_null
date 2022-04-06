@@ -98,9 +98,9 @@
 					<div class="d-flex justify-content-center links">
 						<a href="#">비밀번호를 분실했나요?</a>
 					</div>
-					<a href="/login/loginsimple"> <input type="button"
+<!-- 					<a href="/login/loginsimple"> <input type="button"
 						value="미완성 로그인 페이지로 이동" class="btn login_btn">
-					</a>
+					</a> -->
 				</div>
 			</div>
 		</div>

@@ -49,12 +49,6 @@ public class LoginController {
 		return "/login/loginsimple";
 	}
 
-	@GetMapping("/loginsample")
-	public String loginsample() {
-
-		return "/login/loginsimple";
-	}
-
 	@GetMapping("/regist")
 	public String regist() {
 

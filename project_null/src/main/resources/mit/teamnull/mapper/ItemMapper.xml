@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mit.teamnull.mapper.ItemMapper">
+<!-- item_code, item_name, item_material, item_stand, item_product, item_draw -->
+	<select id="insert">
+   <![CDATA[
+      INSERT INTO item VALUES (#{item_code},#{item_name},#{item_material},#{item_stand},#{item_product},#{item_draw})
+   ]]>
+	</select>
+	
+	<select id="getInsert" resultType="mit.teamnull.domain.ItemVO">
+   <![CDATA[
+      SELECT * FROM item WHERE item_code = (#{item_code})
+   ]]>
+	</select>
+	
+	<select id="getList" resultType="mit.teamnull.domain.ItemVO">
+   <![CDATA[
+      SELECT * FROM item WHERE item_code LIKE '%'||#{item_code}||'%'
+   ]]>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

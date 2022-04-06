@@ -12,29 +12,6 @@
 <link rel="stylesheet" href="/resources/css/tables.css">
 </head>
 <body>
-
-<%-- 	<div class="card-body">
-		<table class="table table-bordered" id="dataTable">
-			<thead>
-				<tr>
-					<th>이름</th>
-					<th>부서</th>
-					<th>직급</th>
-					<th>번호</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list }" var="list">
-					<tr>
-						<td><c:out value="${list.staff_name}" /></td>
-						<td><c:out value="${list.staff_depart}" /></td>
-						<td><c:out value="${list.staff_title}" /></td>
-						<td><c:out value="${list.staff_tel}" /></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div> --%>
 	<div class="card-body">
 		<table class="table table-bordered" id="dataTable">
 			<thead>

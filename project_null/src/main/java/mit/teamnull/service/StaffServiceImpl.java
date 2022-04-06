@@ -9,7 +9,6 @@ import mit.teamnull.domain.StaffVO;
 import mit.teamnull.mapper.StaffMapper;
 
 
-
 @Service
 @AllArgsConstructor
 public class StaffServiceImpl implements StaffService {

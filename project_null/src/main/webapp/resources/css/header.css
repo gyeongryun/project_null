@@ -156,9 +156,10 @@ input#menuicon:checked + label span:nth-child(3){
     height:80px;
     border-radius: 50%;
     text-align: center;
+    z-index:2;
 }
 input#menuicon:checked ~ .circle{
-    left: 238px;
+/*     left: 238px; */
 }
 /* 메뉴아이콘 원 배경 끝 */
 
@@ -183,10 +184,24 @@ input#menuicon:checked + label + div{
 }
 input#menuicon:checked + label{
     z-index: 5;
-    left: 250px;
+/*     left: 250px; */
 }
-/* 사이드바 끝 */
+/* 사이드바 끝  */
 
+/* 사이드바 등록메뉴 */
+div.sidebarregister{
+	margin-top:180px;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    z-index:1;
+}
+input#menuicon:checked + label + div{
+    right: -300;
+}
+/* 오른쪽 사이드 등록바 끝 */
 body{
 	margin-top:240px;
 	margin-left:350px;
@@ -194,3 +209,5 @@ body{
 input#menuicon:checked ~ body{
 
 }
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mit.teamnull.mapper.QuizMapper">
+
+	<select id="list" resultType="mit.teamnull.domain.QuizVO">
+   <![CDATA[
+      SELECT * FROM num
+      ]]>
+	</select>
+
+<!-- 
+#{} = '2'
+${} = 2
+-->
+
+	<select id="insert">
+   <![CDATA[
+      INSERT INTO num VALUES (${num1},${num2})
+   ]]>
+	</select>
+
+</mapper>
