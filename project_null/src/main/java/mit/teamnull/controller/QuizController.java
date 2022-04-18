@@ -13,6 +13,7 @@ import mit.teamnull.service.QuizService;
 @Controller
 @Log4j
 @AllArgsConstructor
+/* 실험용파일 */
 public class QuizController {
 	
 	QuizService service;

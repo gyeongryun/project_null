@@ -8,8 +8,11 @@ public interface ItemMapper {
 	
 	public void insert(ItemVO vo);
 	
-	public ItemVO getInsert(String item_code);
+	public ItemVO getItem(String item_code);
 	
-	public List<ItemVO> getList(String item_code);
+	public void update(ItemVO vo);
 	
+	public int checkOverlap(ItemVO vo);
+	
+	public List<ItemVO> search(String item_code);
 }

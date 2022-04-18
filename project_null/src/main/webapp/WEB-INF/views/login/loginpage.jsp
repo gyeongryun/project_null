@@ -26,7 +26,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-	<!-- integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+<!-- integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
 	crossorigin="anonymous"> -->
 </head>
 
@@ -98,7 +98,7 @@
 					<div class="d-flex justify-content-center links">
 						<a href="#">비밀번호를 분실했나요?</a>
 					</div>
-<!-- 					<a href="/login/loginsimple"> <input type="button"
+					<!-- 					<a href="/login/loginsimple"> <input type="button"
 						value="미완성 로그인 페이지로 이동" class="btn login_btn">
 					</a> -->
 				</div>

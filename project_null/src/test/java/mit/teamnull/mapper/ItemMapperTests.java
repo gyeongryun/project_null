@@ -33,21 +33,20 @@ public class ItemMapperTests {
 		mapper.insert(vo);
 	}
 
-	@Test
-	public void getInsert() {
-		log.info(mapper.getInsert("11"));
-		/* mapper.getList().forEach(vo->log.info(vo)); */
-	}
+	/*
+	 * @Test public void getInsert() { log.info(mapper.getInsert("11"));
+	 * mapper.getList().forEach(vo->log.info(vo)); }
+	 */
 
 	@Test
 	public void getList() {
-		List<ItemVO> list =mapper.getList("ST");
-		for(ItemVO vo : list) {
+		List<ItemVO> list = mapper.search("3");
+		for (ItemVO vo : list) {
 			log.info(vo.getItem_name());
 		}
-		//log.info(mapper.getList("1"));
+		// log.info(mapper.getList("1"));
 		/* mapper.getList().forEach(vo->log.info(vo)); */
-		
+
 	}
-	
+
 }

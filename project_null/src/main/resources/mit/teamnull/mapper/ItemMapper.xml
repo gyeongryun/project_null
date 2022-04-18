@@ -11,22 +11,32 @@
    ]]>
 	</select>
 	
-	<select id="getInsert" resultType="mit.teamnull.domain.ItemVO">
+	<select id="getItem" resultType="mit.teamnull.domain.ItemVO">
    <![CDATA[
       SELECT * FROM item WHERE item_code = (#{item_code})
    ]]>
 	</select>
 	
-	<select id="getList" resultType="mit.teamnull.domain.ItemVO">
-   <![CDATA[
-      SELECT * FROM item WHERE item_code LIKE '%'||#{item_code}||'%'
-   ]]>
+	
+	<select id="update">
+		UPDATE item
+		SET
+		item_name = #{item_name},
+		item_material = #{item_material},
+		item_stand = #{item_stand},
+		item_product = #{item_product},
+		item_draw = #{item_draw}
+		WHERE item_code = #{item_code}
 	</select>
 	
+	<select id="checkOverlap" resultType="_int">
+		SELECT COUNT (*) FROM item 
+		WHERE item_code = #{item_code}
+	</select>
 	
-	
-	
-	
+	<select id="search" resultType="mit.teamnull.domain.ItemVO">
+		SELECT * FROM item WHERE item_code LIKE '%'||#{item_code}||'%'
+	</select>
 	
 	
 </mapper>

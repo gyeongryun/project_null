@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mit.teamnull.mapper.ObtainMapper">
+<!-- ORDER_CODE CONT_CODE ITEM_CODE ITEM_MRP ITEM_PRODATE ITEM_REQUIRE ITEM_DUE-->
+<!-- order_code cont_code item_code item_mrp item_prodate item_require item_due-->
+	<select id="insert">
+   <![CDATA[
+      INSERT INTO order_info 
+      (order_code,cont_code,item_code,item_mrp,item_require,item_prodate,item_due)
+      VALUES (#{order_code},#{cont_code},#{item_code},#{item_mrp},#{item_require},#{item_prodate},#{item_due})
+   ]]>
+	</select>
+	
+	<select id="verification" resultType="mit.teamnull.domain.ObtainVO">
+   <![CDATA[
+	SELECT order_info.order_code,order_info.cont_code,order_info.item_code,item.item_name,item_mrp,item_require,item_prodate,item_due
+	FROM item,order_info
+	where order_info.order_code=
+	(SELECT order_code FROM order_info WHERE order_code=#{order_code})
+	AND order_info.item_code=item.item_code
+   ]]>
+	</select>
+	
+	<select id="search" resultType="mit.teamnull.domain.ObtainVO">
+   <![CDATA[
+	SELECT order_info.order_code,order_info.cont_code,order_info.item_code,item.item_name,item_mrp,item_require,item_prodate,item_due
+	FROM item,order_info
+	where order_info.order_code=
+	(SELECT order_code FROM order_info WHERE order_code LIKE '%'||#{order_code}||'%')
+	AND order_info.item_code=item.item_code
+   ]]>
+	</select>
+	
+	
+	<select id="update">
+		UPDATE order_info 
+		SET
+		order_code = #{order_code},
+		cont_code = #{cont_code},
+		item_code = #{item_code},
+		item_mrp = #{item_mrp},
+		item_require = ${item_require},
+		item_prodate = #{item_prodate},
+		item_due = #{item_due}
+		WHERE order_code = #{order_code}
+	</select>
+	
+	<select id="checkOverlap" resultType="_int">
+		SELECT COUNT (*) FROM order_info  
+		WHERE order_code = #{order_code}
+	</select>
+	
+
+	
+	
+</mapper>

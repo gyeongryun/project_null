@@ -16,15 +16,12 @@ import mit.teamnull.service.StaffService;
 @Log4j
 @RequestMapping("/login/*")
 @AllArgsConstructor
+/* 로그인 전용 직원 목록 컨트롤러 */
 public class LoginController {
 
 	public StaffService service;
 
-//	@GetMapping("/login") //주소창
-//	public String login() {
-//		
-//		return "/login/loginpage"; //파일경로
-//	}
+
 	@GetMapping("/loginpage")
 	public String loginpage() {
 
@@ -35,8 +32,8 @@ public class LoginController {
 	public String login(StaffVO vo, Model model) {
 		int cnt = service.login(vo.getStaff_name(), vo.getStaff_depart());
 		if (cnt == 1) {
-			log.info("로그인성공할까나?");
-			return "redirect:/staff/stafflist";
+			log.info("로그인성공하려나?");
+			return "redirect:/procure/home";
 		} else
 			model.addAttribute("msg", "이름과 부서가 일치하지 않습니다. 인사과에 문의하세요.");
 		model.addAttribute("url", "/login/loginpage");

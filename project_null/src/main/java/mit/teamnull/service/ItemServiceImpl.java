@@ -22,14 +22,27 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public ItemVO getInsert(String item_code) {
-		return mapper.getInsert(item_code);
+	public ItemVO getItem(String item_code) {
+		return mapper.getItem(item_code);
+	}
+
+
+	@Override
+	public void update(ItemVO vo) {
+		mapper.update(vo);
 	}
 
 	@Override
-	public List<ItemVO> getList(String item_code) {
-		return mapper.getList(item_code);
+	public int checkOverlap(ItemVO vo) {
+		return mapper.checkOverlap(vo);
 	}
+
+	@Override
+	public List<ItemVO> search(String item_code) {
+		return mapper.search(item_code);
+	}
+
+
 
 
 }

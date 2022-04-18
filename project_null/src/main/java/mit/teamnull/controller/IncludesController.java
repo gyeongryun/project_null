@@ -16,7 +16,7 @@ import mit.teamnull.service.StaffService;
 @Log4j
 @RequestMapping("/includes/*")
 @AllArgsConstructor
-
+/* 필요없는파일 (실험용) */
 public class IncludesController {
 	@GetMapping("/header")
 	public String iheader() {

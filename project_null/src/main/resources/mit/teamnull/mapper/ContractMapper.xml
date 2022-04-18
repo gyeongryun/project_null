@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mit.teamnull.mapper.ContractMapper">
+<!-- part_name, part_number, part_status, part_address, part_contact, part_rep, part_manager -->
+	<select id="insertPart">
+		INSERT INTO partner
+			(part_name,part_number,part_status,part_address,
+			part_contact,part_rep,part_manager)
+		VALUES(#{part_name},#{part_number},#{part_status},#{part_address},
+			#{part_contact},#{part_rep},#{part_manager})
+	</select>
+	
+	<select id="verificationPart" resultType="mit.teamnull.domain.PartnerVO">
+	   <![CDATA[
+	      SELECT * FROM partner WHERE part_name = (#{part_name})
+	   ]]>
+	</select>
+	
+	<select id="searchPart" resultType="mit.teamnull.domain.PartnerVO">
+	   <![CDATA[
+	      SELECT * FROM partner WHERE part_name LIKE '%'||#{part_name}||'%'
+	   ]]>
+	</select>
+	
+	<delete id="deletePart">
+		DELETE * FROM partner WHERE part_name = #{part_name}
+	</delete>
+	
+	<select id="updatePart">
+		UPDATE partner 
+		SET part_name=#{part_name},
+		part_number=#{part_number},
+		part_status=#{part_status},
+		part_address=#{part_address},
+		part_contact=#{part_contact},
+		part_rep=#{part_rep},
+		part_manager=#{part_manager}
+		WHERE part_name = #{part_name}
+	</select>
+	
+	<select id="checkOverlapPart" resultType="_int">
+		SELECT COUNT (*) FROM partner
+		WHERE part_name = #{part_name}
+	</select>
+<!-- partner와 contract의 경계////////////////////////////////////////////////////////////////////////////////////////// -->
+	<select id=""></select>
+	
+</mapper>
