@@ -23,73 +23,43 @@
 			</label>
 			<div id="sidebarregister">
 				<form action="/contract/insert" method="post">
-<!-- cont_code, item_code, part_name, supply_price, item_qntty, supply_lt, cont_advance, cont_middle, cont_balance, cont_flaw, cont_breach, cont_pay, cont_detail -->
 					<table>
 						<tr>
-							<td>계약서코드<span style="color: red">*</span> :
+							<td>협력사명<span style="color: red">*</span> :
 							</td>
-							<td><input type="text" name="cont_code"
-								value="${contractVO.cont_code}" required="required"></td>
-						</tr>
-						<tr>
-							<td>품목코드<span style="color: red">*</span> :</td>
-							<td><input type="text" name="item_code"
-								value="${contractVO.item_code}" required></td>
-						</tr>
-						<tr>
-							<td>협력업체명<span style="color: red">*</span> :</td>
 							<td><input type="text" name="part_name"
-								value="${contractVO.part_name}" required></td>
+								value="${item.part_name}" required="required"></td>
 						</tr>
 						<tr>
-							<td>공급가격(단가) :</td>
-							<td><input type="text" name="supply_price"
-								value="${contractVO.supply_price}"></td>
+							<td>사업자등록번호 :</td>
+							<td><input type="text" name="part_number"
+								placeholder="000-00-00000"
+								value="${item.part_number}"></td>
 						</tr>
 						<tr>
-							<td>수량 :</td>
-							<td><input type="text" name="item_qntty"
-								value="${contractVO.item_qntty}"></td>
+							<td>업태 :</td>
+							<td><input type="text" name="part_status"
+								value="${item.part_status}"></td>
 						</tr>
 						<tr>
-							<td>부품공급 L/T :</td>
-							<td><input type="text" name="supply_lt"
-								value="${contractVO.supply_lt}"></td>
+							<td>주소 :</td>
+							<td><input type="text" name="part_address"
+								value="${item.part_address}"></td>
 						</tr>
 						<tr>
-							<td>선수금 :</td>
-							<td><input type="text" name="cont_advance"
-								value="${contractVO.cont_advance}"></td>
+							<td>연락처 :</td>
+							<td><input type="text" name="part_contact"
+								value="${item.part_contact}"></td>
 						</tr>
 						<tr>
-							<td>중도금 :</td>
-							<td><input type="text" name="cont_middle"
-								value="${contractVO.cont_middle}"></td>
+							<td>대표자 :</td>
+							<td><input type="text" name="part_rep"
+								value="${item.part_rep}"></td>
 						</tr>
 						<tr>
-							<td>잔금 :</td>
-							<td><input type="text" name="cont_balance"
-								value="${contractVO.cont_balance}"></td>
-						</tr>
-						<tr>
-							<td>제품하자시 :</td>
-							<td><input type="text" name="cont_flaw"
-								value="${contractVO.cont_flaw}"></td>
-						</tr>
-						<tr>
-							<td>계약위반시 :</td>
-							<td><input type="text" name="cont_breach"
-								value="${contractVO.cont_breach}"></td>
-						</tr>
-						<tr>
-							<td>대금지불조건 :</td>
-							<td><input type="text" name="cont_pay"
-								value="${contractVO.cont_pay}"></td>
-						</tr>
-						<tr>
-							<td>세부사항 :</td>
-							<td><input type="text" name="cont_detail"
-								value="${contractVO.cont_detail}"></td>
+							<td>담당자 :</td>
+							<td><input type="text" name="part_manager"
+								value="${item.part_manager}"></td>
 						</tr>
 
 					</table>
@@ -102,9 +72,10 @@
 					<label for="submit_btn">
 						<img src="/resources/img/저장버튼.png" height=40px align="right">
 					</label>
-					<a href="/contract/cont?part_name=${load.part_name}">
+					<a href="/contract/cont?part_name=${item.part_name}">
 						<img src="/resources/img/다음버튼.png" height=40px align="right">
 					</a>
+					
 				</form>
 			</div>
 		</div>
@@ -125,19 +96,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%-- 				<c:forEach items="${list }" var="list">
-					<tr>
-						<td><a href="/item/modify">${list.item_code}</a>
-						</td>
-						<td><c:out value="${list.item_name}" /></td>
-						<td><c:out value="${list.item_material}" /></td>
-						<td><c:out value="${list.item_stand}" /></td>
-						<td><c:out value="${list.item_product}" /></td>
-						<td><c:out value="${list.item_draw}" /></td>
-						
-					</tr>
-				</c:forEach> --%>
-
 				<tr>
 					<td>${item.part_name}</td>
 					<td>${item.part_number }</td>
@@ -147,7 +105,6 @@
 					<td>${item.part_rep }</td>
 					<td>${item.part_manager }</td>
 				</tr>
-
 			</tbody>
 		</table>
 	</div>

@@ -16,7 +16,7 @@
 			class="table-bordered">
 			<thead>
 				<tr>
-					<th colspan="6">발주서</th>
+					<th colspan="6">거래계약서</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -46,10 +46,8 @@
 					<td></td>
 					<td></td>
 				</tr>
-
-
 				<tr>
-					<td rowspan="4">발주자</td>
+					<td rowspan="4">수요자</td>
 					<td>회사명</td>
 					<td>MIT능력개발원</td>
 					<td>사업자등록번호</td>
@@ -75,39 +73,41 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td rowspan="2">품목정보</td>
-					<td>품목명</td>
-					<td>${print.item_name}</td>
-					<td>품목코드</td>
-					<td colspan="2">${print.item_code}</td>
+					<td colspan="6">계약조건</td>
 				</tr>
 				<tr>
-					<td>규격</td>
-					<td>${print.item_stand}</td>
-					<td>재질</td>
-					<td colspan="2">${print.item_material}</td>
+					<td rowspan="3">인수금액<br></td>
+					<td>선수금</td>
+					<td colspan="4">${cprint.cont_advance}</td>
 				</tr>
 				<tr>
-					<td rowspan="2">납기/수량</td>
-					<td>일정</td>
-					<td colspan="4">${print.item_due}</td>
+					<td>중도금</td>
+					<td colspan="4">${cprint.cont_middle}</td>
 				</tr>
 				<tr>
-					<td>수량</td>
-					<td colspan="4">${print.item_qntty}</td>
+					<td>잔금</td>
+					<td colspan="4">${cprint.cont_balance}</td>
 				</tr>
 				<tr>
-					<td rowspan="2">가격</td>
-					<td>단가</td>
-					<td colspan="4">${print.supply_price}</td>
+					<td rowspan="4">계약조건</td>
+					<td>제품하자시</td>
+					<td colspan="4">${cprint.cont_flaw}</td>
 				</tr>
 				<tr>
-					<td>총 가격</td>
-					<td colspan="4">
-						<c:set var="priceAmount"
-							value="${print.supply_price * print.supply_price}" />
-					</td>
+					<td>계약위반시</td>
+					<td colspan="4">${cprint.cont_breach}</td>
 				</tr>
+				<tr>
+					<td>대금지불조건</td>
+					<td colspan="4">${cprint.cont_pay}</td>
+				</tr>
+				<tr>
+					<td>세부사항</td>
+					<td colspan="4">${cprint.cont_detail}</td>
+				</tr>
+<!-- 				<tr>
+					<td colspan="6">계약일 </td>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>

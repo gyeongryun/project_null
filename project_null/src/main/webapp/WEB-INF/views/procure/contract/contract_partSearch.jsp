@@ -71,6 +71,10 @@
 					<label for="submit_btn">
 						<img src="/resources/img/저장버튼.png" height=40px align="right">
 					</label>
+					<a href="/contract/cont?part_name=${load.part_name}">
+						<img src="/resources/img/다음버튼.png" height=40px align="right">
+					</a>
+					
 				</form>
 			</div>
 		</div>

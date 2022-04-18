@@ -16,6 +16,5 @@ public interface ObtainService {
 	
 	public int checkOverlap(ObtainVO vo);
 	
-
 	
 }

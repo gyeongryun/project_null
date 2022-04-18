@@ -66,11 +66,5 @@ public class PurchaseController {
 		return "/procure/purchase/purchase_print";
 	}
 	
-	@GetMapping("/pprint")
-	public String printEx(PurchaseVO vo, Model model) {
-		PurchaseVO resultList = service.pullInfo("d");
-		model.addAttribute("print", resultList);
-		return "/procure/purchase/purchase_print";
-	}
 	
 }

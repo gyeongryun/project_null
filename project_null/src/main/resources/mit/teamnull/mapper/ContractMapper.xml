@@ -45,7 +45,40 @@
 		SELECT COUNT (*) FROM partner
 		WHERE part_name = #{part_name}
 	</select>
+	
 <!-- partner와 contract의 경계////////////////////////////////////////////////////////////////////////////////////////// -->
-	<select id=""></select>
+	
+	<select id="insertCont">
+		INSERT INTO contract
+			(cont_code, item_code, part_name, supply_price, item_qntty, supply_lt, 
+			cont_advance, cont_middle, cont_balance, cont_flaw, cont_breach, cont_pay, 
+			cont_detail)
+		VALUES(#{cont_code},#{item_code},#{part_name},#{supply_price},#{item_qntty},
+			#{supply_lt},#{cont_advance},#{cont_middle},#{cont_balance},#{cont_flaw},
+			#{cont_breach},#{cont_pay},#{cont_detail})
+	</select>
+	
+	<select id="checkOverlapCont" resultType="_int">
+		SELECT COUNT (*) FROM contract
+		WHERE cont_code = #{cont_code}
+	</select>
+	
+	<select id="verificationCont" resultType="mit.teamnull.domain.ContractVO">
+	   <![CDATA[
+	      SELECT * FROM contract WHERE cont_code = (#{cont_code})
+	   ]]>
+	</select>
+	
+<!-- 	<select id="partInfo" resultType="mit.teamnull.domain.PartnerVO">
+	   <![CDATA[
+	      SELECT * FROM partner WHERE part_name = #{part_name}
+	   ]]>
+	</select>
+	
+	<select id="contInfo" resultType="mit.teamnull.domain.ContractVO">
+	   <![CDATA[
+	      SELECT * FROM contract WHERE cont_code = (#{cont_code})
+	   ]]>
+	</select> -->
 	
 </mapper>

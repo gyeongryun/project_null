@@ -11,55 +11,85 @@
 </head>
 <body>
 	<div id="content">
-		<h1>계약 등록-협력사</h1>
+		<h1>계약 등록-계약 세부 내용</h1>
 		<form id="searchForm" action="/contract/search" method="post">
 			<input type="search" name="part_name" value="" required="required">
 			<button type="submit">검색</button>
 		</form>
 		<div>
-			<input type="checkbox" id="menuswitch">
+			<input type="checkbox" id="menuswitch" checked>
 			<label for="menuswitch">
 				<img src="/resources/img/등록버튼.png" height=40px align="right" id="registerbutton">
 			</label>
 			<div id="sidebarregister">
-				<form action="/contract/insert" method="post">
+				<form action="/contract/insertcont" method="post">
+<!-- cont_code, item_code, part_name, supply_price, item_qntty, supply_lt, cont_advance, cont_middle, cont_balance, cont_flaw, cont_breach, cont_pay, cont_detail -->
 					<table>
 						<tr>
-							<td>협력사명<span style="color: red">*</span> :
+							<td>계약서코드<span style="color: red">*</span> :
 							</td>
+							<td><input type="text" name="cont_code"
+								value="${contractVO.cont_code}" required="required"></td>
+						</tr>
+						<tr>
+							<td>품목코드<span style="color: red">*</span> :</td>
+							<td><input type="text" name="item_code"
+								value="${contractVO.item_code}" required></td>
+						</tr>
+						<tr>
+							<td>협력업체명<span style="color: red">*</span> :</td>
 							<td><input type="text" name="part_name"
-								value="${partVO.part_name}" required="required"></td>
+								value="${contractVO.part_name}" required></td>
 						</tr>
 						<tr>
-							<td>사업자등록번호 :</td>
-							<td><input type="text" name="part_number"
-								placeholder="000-00-00000"
-								value="${partVO.part_number}"></td>
+							<td>공급가격(단가) :</td>
+							<td><input type="text" name="supply_price"
+								value="${contractVO.supply_price}"></td>
 						</tr>
 						<tr>
-							<td>업태 :</td>
-							<td><input type="text" name="part_status"
-								value="${partVO.part_status}"></td>
+							<td>수량 :</td>
+							<td><input type="number" name="item_qntty"
+								value="${contractVO.item_qntty}"></td>
 						</tr>
 						<tr>
-							<td>주소 :</td>
-							<td><input type="text" name="part_address"
-								value="${partVO.part_address}"></td>
+							<td>부품공급 L/T :</td>
+							<td><input type="text" name="supply_lt"
+								value="${contractVO.supply_lt}"></td>
 						</tr>
 						<tr>
-							<td>연락처 :</td>
-							<td><input type="text" name="part_contact"
-								value="${partVO.part_contact}"></td>
+							<td>선수금 :</td>
+							<td><input type="text" name="cont_advance"
+								value="${contractVO.cont_advance}"></td>
 						</tr>
 						<tr>
-							<td>대표자 :</td>
-							<td><input type="text" name="part_rep"
-								value="${partVO.part_rep}"></td>
+							<td>중도금 :</td>
+							<td><input type="text" name="cont_middle"
+								value="${contractVO.cont_middle}"></td>
 						</tr>
 						<tr>
-							<td>담당자 :</td>
-							<td><input type="text" name="part_manager"
-								value="${partVO.part_manager}"></td>
+							<td>잔금 :</td>
+							<td><input type="text" name="cont_balance"
+								value="${contractVO.cont_balance}"></td>
+						</tr>
+						<tr>
+							<td>제품하자시 :</td>
+							<td><input type="text" name="cont_flaw"
+								value="${contractVO.cont_flaw}"></td>
+						</tr>
+						<tr>
+							<td>계약위반시 :</td>
+							<td><input type="text" name="cont_breach"
+								value="${contractVO.cont_breach}"></td>
+						</tr>
+						<tr>
+							<td>대금지불조건 :</td>
+							<td><input type="text" name="cont_pay"
+								value="${contractVO.cont_pay}"></td>
+						</tr>
+						<tr>
+							<td>세부사항 :</td>
+							<td><input type="text" name="cont_detail"
+								value="${contractVO.cont_detail}"></td>
 						</tr>
 
 					</table>
@@ -72,6 +102,12 @@
 					<label for="submit_btn">
 						<img src="/resources/img/저장버튼.png" height=40px align="right">
 					</label>
+					<a href="/contract/part">
+						<img src="/resources/img/다음버튼.png" height=40px align="right">
+					</a>
+					<a href="/contract/print?part_name=${contractVO.part_name}&cont_code=${contractVO.cont_code}">
+						<img src="/resources/img/출력버튼.png" height=40px align="right">
+					</a>
 				</form>
 			</div>
 		</div>
@@ -82,25 +118,44 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>협력사명</th>
-					<th>사업자등록번호</th>
-					<th>업태</th>
-					<th>주소</th>
-					<th>연락처</th>
-					<th>대표자</th>
-					<th>담당자</th>
+					<th>계약서코드</th>
+					<th>품목코드</th>
+					<th>협력업체명</th>
+					<th>공급가격</th>
+					<th>수량</th>
+					<th>공급L/T</th>
+					<th>선수금</th>
+					<th>중도금</th>
+					<th>잔금</th>
 				</tr>
 			</thead>
 			<tbody>
+				<%-- 				<c:forEach items="${list }" var="list">
+					<tr>
+						<td><a href="/item/modify">${list.item_code}</a>
+						</td>
+						<td><c:out value="${list.item_name}" /></td>
+						<td><c:out value="${list.item_material}" /></td>
+						<td><c:out value="${list.item_stand}" /></td>
+						<td><c:out value="${list.item_product}" /></td>
+						<td><c:out value="${list.item_draw}" /></td>
+						
+					</tr>
+				</c:forEach> --%>
+<!-- cont_code, item_code, part_name, supply_price, item_qntty, supply_lt, cont_advance, cont_middle, 
+cont_balance, cont_flaw, cont_breach, cont_pay, cont_detail -->
 				<tr>
+					<td>${item.cont_code}</td>
+					<td>${item.item_code}</td>
 					<td>${item.part_name}</td>
-					<td>${item.part_number }</td>
-					<td>${item.part_status }</td>
-					<td>${item.part_address }</td>
-					<td>${item.part_contact }</td>
-					<td>${item.part_rep }</td>
-					<td>${item.part_manager }</td>
+					<td>${item.supply_price}</td>
+					<td>${item.item_qntty}</td>
+					<td>${item.supply_lt}</td>
+					<td>${item.cont_advance}</td>
+					<td>${item.cont_middle}</td>
+					<td>${item.cont_balance}</td>
 				</tr>
+
 			</tbody>
 		</table>
 	</div>

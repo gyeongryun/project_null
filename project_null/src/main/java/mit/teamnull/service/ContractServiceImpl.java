@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import mit.teamnull.domain.ContractVO;
 import mit.teamnull.domain.PartnerVO;
 import mit.teamnull.mapper.ContractMapper;
 
@@ -42,7 +43,23 @@ public class ContractServiceImpl implements ContractService {
 		return mapper.checkOverlapPart(vo);
 	}
 
+	@Override
+	public void insertCont(ContractVO vo) {
+		mapper.insertCont(vo);
+	}
 
+	@Override
+	public int checkOverlapCont(ContractVO vo) {
+		return mapper.checkOverlapCont(vo);
+	}
+
+	@Override
+	public ContractVO verificationCont(String cont_code) {
+		
+		return mapper.verificationCont(cont_code);
+	}
+
+	
 
 
 
