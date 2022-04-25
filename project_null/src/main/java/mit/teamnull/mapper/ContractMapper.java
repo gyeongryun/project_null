@@ -20,7 +20,7 @@ public interface ContractMapper {
 	
 	public void insertCont(ContractVO vo);
 	
-	public int checkOverlapCont(ContractVO vo);
+	public int checkOverlapCont(String cont_code);
 	
 	public ContractVO verificationCont(String cont_code);
 	
@@ -34,5 +34,7 @@ public interface ContractMapper {
 	public List<ContractVO> autoItem_code(String item_code);
 	
 	public List<ContractVO> autoCpart_name(String part_name);
+
+	public int checkOverlap(String cont_code);
 	
 }

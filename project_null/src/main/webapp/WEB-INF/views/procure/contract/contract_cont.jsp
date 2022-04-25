@@ -69,49 +69,10 @@
 <!-- cont_code, item_code, part_name, supply_price, item_qntty, supply_lt, cont_advance, cont_middle, cont_balance, cont_flaw, cont_breach, cont_pay, cont_detail -->
 					<table>
 						<tr>
-							<td>계약서코드<span style="color: red">*</span> :
+							<td>계약서코드<span style="color: yellow">*</span> :
 							</td>
 							<td><input type="text" name="cont_code"
-								value="${contractVO.cont_code}" required="required" id="autoCont_code">
-																<script>
-							    $("#autoCont_code").autocomplete({
-							        source : function(request, response) {
-							            $.ajax({
-							                  url : "/contsearch/autoCont_code"
-							                , type : "GET"
-							                , dataType : "json"
-							                , data : {keyword : $("#autoCont_code").val()} // 검색 키워드
-							                , success : function(data){ // 성공
-							                    response(
-							                        $.map(data, function(item) {
-							                            return {
-							                                  label : item	//목록에 표시되는 값
-							                                , value : item	//선택 시 input창에 표시되는 값
-							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
-							                            };
-							                        })
-							                    );    //response
-							                }
-							                ,
-							                error : function(){ //실패
-							                    alert("통신에 실패했습니다.");
-							                }
-							            });
-							        }
-							        , minLength : 1
-							        , autoFocus : false
-							        , select : function(evt, ui) {
-							            console.log("전체 data: " + JSON.stringify(ui));
-							            console.log("db Index : " + ui.item);
-							            console.log("검색 데이터 : " + ui.item);
-							        }
-							        , focus : function(evt, ui) {
-							            return false;
-							        }
-							        , close : function(evt) {
-							        }
-							    });
-								</script>	
+								value="${contractVO.cont_code}" disabled>	
 							</td>
 						</tr>
 						<tr>
@@ -268,8 +229,10 @@
 					<a href="/contract/part">
 						<img src="/resources/img/다음버튼.png" height=40px align="right">
 					</a>
+					<br>
+					<br>
 					<a href="/contract/print?part_name=${contractVO.part_name}&cont_code=${contractVO.cont_code}">
-						<img src="/resources/img/출력버튼.png" height=40px align="right">
+						<img src="/resources/img/출력버튼.png" height=40px align=right>
 					</a>
 				</form>
 			</div>

@@ -69,49 +69,10 @@
 					<table>
 					<!-- order_code cont_code item_code item_mrp item_prodate item_require item_due-->
 						<tr>
-							<td>발주서코드<span style="color: red">*</span> :
+							<td>발주서코드<span style="color: yellow">*</span> :
 							</td>
 							<td><input type="text" name="order_code"
-								value="${onelist.order_code}" required="required" id="autoOrder_code">
-								<script>
-							    $("#autoOrder_code").autocomplete({
-							        source : function(request, response) {
-							            $.ajax({
-							                  url : "/obsearch/autoOrder_code"
-							                , type : "GET"
-							                , dataType : "json"
-							                , data : {keyword : $("#autoOrder_code").val()} // 검색 키워드
-							                , success : function(data){ // 성공
-							                    response(
-							                        $.map(data, function(item) {
-							                            return {
-							                                  label : item	//목록에 표시되는 값
-							                                , value : item	//선택 시 input창에 표시되는 값
-							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
-							                            };
-							                        })
-							                    );    //response
-							                }
-							                ,
-							                error : function(){ //실패
-							                    alert("통신에 실패했습니다.");
-							                }
-							            });
-							        }
-							        , minLength : 1
-							        , autoFocus : false
-							        , select : function(evt, ui) {
-							            console.log("전체 data: " + JSON.stringify(ui));
-							            console.log("db Index : " + ui.item);
-							            console.log("검색 데이터 : " + ui.item);
-							        }
-							        , focus : function(evt, ui) {
-							            return false;
-							        }
-							        , close : function(evt) {
-							        }
-							    });
-								</script>
+								value="${onelist.order_code}" disabled>
 							</td>
 						</tr>
 						<tr>
@@ -164,46 +125,7 @@
 							<td>품목코드<span style="color: red">*</span> :
 							</td>
 							<td><input type="text" name="item_code"
-								value="${onelist.item_code}" required="required" id="autoItem_code">
-								<script>
-							    $("#autoItem_code").autocomplete({
-							        source : function(request, response) {
-							            $.ajax({
-							                  url : "/obsearch/autoItem_code"
-							                , type : "GET"
-							                , dataType : "json"
-							                , data : {keyword : $("#autoItem_code").val()} // 검색 키워드
-							                , success : function(data){ // 성공
-							                    response(
-							                        $.map(data, function(item) {
-							                            return {
-							                                  label : item	//목록에 표시되는 값
-							                                , value : item	//선택 시 input창에 표시되는 값
-							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
-							                            };
-							                        })
-							                    );    //response
-							                }
-							                ,
-							                error : function(){ //실패
-							                    alert("통신에 실패했습니다.");
-							                }
-							            });
-							        }
-							        , minLength : 1
-							        , autoFocus : false
-							        , select : function(evt, ui) {
-							            console.log("전체 data: " + JSON.stringify(ui));
-							            console.log("db Index : " + ui.item);
-							            console.log("검색 데이터 : " + ui.item);
-							        }
-							        , focus : function(evt, ui) {
-							            return false;
-							        }
-							        , close : function(evt) {
-							        }
-							    });
-								</script>	
+								value="${onelist.item_code}" disabled>
 							</td>
 						</tr>
 						<tr>

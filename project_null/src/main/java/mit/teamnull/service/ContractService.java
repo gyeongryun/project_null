@@ -21,7 +21,7 @@ public interface ContractService {
 	
 	public void insertCont(ContractVO vo);
 	
-	public int checkOverlapCont(ContractVO vo);
+//	public int checkOverlapCont(ContractVO vo);
 	
 	public ContractVO verificationCont(String cont_code);
 	

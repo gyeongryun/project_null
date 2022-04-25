@@ -1,6 +1,7 @@
 package mit.teamnull.service;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -45,13 +46,46 @@ public class ContractServiceImpl implements ContractService {
 
 	@Override
 	public void insertCont(ContractVO vo) {
+		
+		Random rd = new Random();
+
+		StringBuffer bf = new StringBuffer();
+
+		for (int i = 0; i < 6; i++) {
+			if (rd.nextBoolean()) {
+				bf.append((char) ((int) (rd.nextInt(26)) + 65));
+			} else {
+				bf.append((rd.nextInt(10)));
+			}
+		}
+		
+		System.out.println("---------------------------");
+		System.out.println("현재 랜덤값:"+bf);
+		System.out.println("---------------------------");
+		
+		while (mapper.checkOverlapCont("CONT-" + bf)==1) {
+			System.out.println("중복이다.");
+			bf.delete(0, bf.length());
+			System.out.println("지운 랜덤값:"+bf);
+			for (int i = 0; i < 6; i++) {
+				if (rd.nextBoolean()) {
+					bf.append((char) ((int) (rd.nextInt(26)) + 65));
+				} else {
+					bf.append((rd.nextInt(10)));
+				}
+			}
+			System.out.println("새로만들어진 랜덤값:"+bf);
+		}
+		
+		vo.setCont_code("CONT-" + bf);
+
 		mapper.insertCont(vo);
 	}
 
-	@Override
-	public int checkOverlapCont(ContractVO vo) {
-		return mapper.checkOverlapCont(vo);
-	}
+//	@Override
+//	public int checkOverlapCont(ContractVO vo) {
+//		return mapper.checkOverlapCont(vo);
+//	}
 
 	@Override
 	public ContractVO verificationCont(String cont_code) {

@@ -13,7 +13,7 @@ public interface ItemMapper {
 	
 	public void update(ItemVO vo);
 	
-	public int checkOverlap(ItemVO vo);
+	public int checkOverlap(String item_code);
 	
 	public List<ItemVO> search(String item_code);
 	

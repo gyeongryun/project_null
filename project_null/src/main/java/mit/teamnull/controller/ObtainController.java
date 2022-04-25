@@ -37,13 +37,13 @@ public class ObtainController {
 	@PostMapping("/insert")
 	public String insert(ObtainVO vo,Model model){
 		
-		log.info("수집된 Obtain"+vo);
-		int cnt = service.checkOverlap(vo);
-		if(cnt==0) {
+//		log.info("수집된 Obtain"+vo);
+//		int cnt = service.checkOverlap(vo);
+//		if(cnt==0) {
 			service.insert(vo);
-		}else {
-			service.update(vo);
-		}
+//		}else {
+//			service.update(vo);
+//		}
 		
 		ObtainVO onelist =service.verification(vo.getOrder_code());
 		model.addAttribute("onelist", onelist);

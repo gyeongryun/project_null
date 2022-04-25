@@ -17,7 +17,7 @@
 	
 	<select id="verification" resultType="mit.teamnull.domain.PurchaseVO">
    <![CDATA[
-	SELECT order_info.order_code, order_info.cont_code, order_info.item_code,
+	SELECT order_info.order_code, order_info.cont_code, contract.item_code,
 	    item_mrp, item_require, item_prodate, item_due, order_date,
 	    item.item_name, item.item_material, item.item_stand,
 	    contract.supply_price,
@@ -46,20 +46,20 @@
 	
 	<select id="search" resultType="mit.teamnull.domain.PurchaseVO">
 		SELECT od.order_code,od.cont_code,
-		    co.part_name,od.item_code,it.item_name,item_mrp,
+		    co.part_name,co.item_code,it.item_name,item_mrp,
 		    item_require,item_prodate,item_due
 		FROM item it,order_info od,contract co
-		WHERE od.item_code=it.item_code
+		WHERE co.item_code=it.item_code
 		    AND od.cont_code=co.cont_code
 		    AND order_code LIKE '%'||#{order_code}||'%'
 	</select>
 	
 	<select id="pullInfo" resultType="mit.teamnull.domain.PurchaseVO">
-	SELECT order_info.order_code, order_info.cont_code, order_info.item_code,
+	SELECT order_info.order_code, order_info.cont_code, contract.item_code,
 	    item_mrp, item_require, item_prodate, item_due, order_date,
 	    item.item_name, item.item_material, item.item_stand,
-	    contract.supply_price, contract.item_qntty,
-	    partner.part_name, partner.part_number, partner.part_status, partner.part_address,
+	    contract.supply_price,
+		partner.part_name, partner.part_number, partner.part_status, partner.part_address,
 	    partner.part_contact, partner.part_rep, partner.part_manager
 	FROM item,partner,order_info,contract
 	WHERE contract.part_name = partner.part_name
@@ -70,11 +70,11 @@
 	
 	
 	<select id="purchaseOrder" resultType="mit.teamnull.domain.PurchaseVO">
-	SELECT order_info.order_code, order_info.cont_code, order_info.item_code,
+	SELECT order_info.order_code, order_info.cont_code, contract.item_code,
 	    item_mrp, item_require, item_prodate, item_due, order_date,
 	    item.item_name, item.item_material, item.item_stand,
-	    contract.supply_price, contract.item_qntty,
-	    partner.part_name, partner.part_number, partner.part_status, partner.part_address,
+	    contract.supply_price,
+		partner.part_name, partner.part_number, partner.part_status, partner.part_address,
 	    partner.part_contact, partner.part_rep, partner.part_manager
 	FROM item,partner,order_info,contract
 	WHERE contract.part_name = partner.part_name

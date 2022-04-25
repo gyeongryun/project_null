@@ -25,5 +25,7 @@ public interface ObtainMapper {
 	
 	public List<ObtainVO> autoItem_code(String item_code);
 
+	public int checkOverlap(String order_code);
+
 	
 }

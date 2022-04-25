@@ -86,15 +86,15 @@ public class ContractController {
 	
 	@PostMapping("/insertcont")
 	public String insertCont(ContractVO vo, Model model) {
-		log.info("1차는 오케이" + vo);
-		int cnt = service.checkOverlapCont(vo);
-		if (cnt == 0) {
+
+//		int cnt = service.checkOverlapCont(vo);
+//		if (cnt == 0) {
 			service.insertCont(vo);
-			log.info("cnt제로" + vo);
-		} else {
-			service.insertCont(vo);
-			log.info("cnt원" + vo);
-		}
+//			log.info("cnt제로" + vo);
+//		} else {
+//			service.insertCont(vo);
+//			log.info("cnt원" + vo);
+//		}
 
 		ContractVO item = service.verificationCont(vo.getCont_code());
 		model.addAttribute("item", item);

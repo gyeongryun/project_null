@@ -14,7 +14,7 @@ public interface ItemService {
 	
 	public void update(ItemVO vo);
 	
-	public int checkOverlap(ItemVO vo);
+	/* public int checkOverlap(ItemVO vo); */
 	
 	public List<ItemVO> search(String item_code);
 	

@@ -103,13 +103,13 @@
 	</select>
 	<select id="autoItem_code" resultType="string">
 	SELECT DISTINCT item_code 
-	FROM contract 
+	FROM item 
 	WHERE ROWNUM &lt; = 4 
 	    AND item_code LIKE UPPER(#{item_code})||'%'
 	</select>
 	<select id="autoCpart_name" resultType="string">
 	SELECT DISTINCT part_name 
-	FROM contract 
+	FROM partner 
 	WHERE ROWNUM &lt; = 4 
 	    AND part_name LIKE UPPER(#{part_name})||'%'
 	</select>

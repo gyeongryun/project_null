@@ -44,12 +44,13 @@ public class ItemController {
 	@PostMapping("/insert")
 	public String insert(ItemVO vo, Model model) {
 		log.info(vo);
-		int cnt = service.checkOverlap(vo);
-		if (cnt == 0) {
+		/*
+		 * int cnt = service.checkOverlap(vo); if (cnt == 0) {
+		 */
 			service.insert(vo);
-		} else {
+/*		} else {
 			service.update(vo);
-		}
+		}*/
 
 		ItemVO item = service.getItem(vo.getItem_code());
 		model.addAttribute("item", item);

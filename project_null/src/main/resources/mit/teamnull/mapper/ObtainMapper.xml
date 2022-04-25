@@ -9,18 +9,21 @@
 	<select id="insert">
    <![CDATA[
       INSERT INTO order_info 
-      (order_code,cont_code,item_code,item_mrp,item_require,item_prodate,item_due)
-      VALUES (#{order_code},#{cont_code},#{item_code},#{item_mrp},#{item_require},#{item_prodate},#{item_due})
+      (order_code,cont_code,item_mrp,item_require,item_prodate,item_due)
+      VALUES (#{order_code},#{cont_code},#{item_mrp},#{item_require},#{item_prodate},#{item_due})
    ]]>
 	</select>
 	
 	<select id="verification" resultType="mit.teamnull.domain.ObtainVO">
    <![CDATA[
-	SELECT order_info.order_code,order_info.cont_code,order_info.item_code,item.item_name,item_mrp,item_require,item_prodate,item_due
-	FROM item,order_info
-	where order_info.order_code=
-	(SELECT order_code FROM order_info WHERE order_code=#{order_code})
-	AND order_info.item_code=item.item_code
+	SELECT *
+	FROM 
+	(SELECT item_code, item_name FROM item WHERE item_code=
+	(SELECT item_code FROM contract 
+	 WHERE cont_code= (SELECT cont_code FROM order_info WHERE order_code=#{order_code}))),
+	(SELECT order_code, cont_code, item_mrp, item_require, item_prodate, item_due
+	FROM order_info
+	WHERE order_code=#{order_code})
    ]]>
 	</select>
 	
@@ -40,7 +43,6 @@
 		SET
 		order_code = #{order_code},
 		cont_code = #{cont_code},
-		item_code = #{item_code},
 		item_mrp = #{item_mrp},
 		item_require = ${item_require},
 		item_prodate = #{item_prodate},

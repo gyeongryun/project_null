@@ -68,53 +68,11 @@
 				<form action="/item/insert" method="post">
 					<table>
 						<tr>
-							<td>품목코드<span style="color: red">*</span> :
+							<td>품목코드<span style="color: yellow">*</span> :
 							</td>
 							<td><input type="text" name="item_code"
-								value="${itemVO.item_code}" placeholder="ex) ITEM-000" required="required" id="autoItem_code">
-								<script>
-							    $("#autoItem_code").autocomplete({
-							        source : function(request, response) {
-							            $.ajax({
-							                  url : "/itemsearch/autoItem_code"
-							                , type : "GET"
-							                , dataType : "json"
-							                , data : {keyWord : $("#autoItem_code").val()} // 검색 키워드
-							                , success : function(data){ // 성공
-							                    response(
-							                        $.map(data, function(item) {
-							                            return {
-							                                  label : item	//목록에 표시되는 값
-							                                , value : item	//선택 시 input창에 표시되는 값
-							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
-							                            };
-							                        })
-							                    );    //response
-							                }
-							                ,
-							                error : function(){ //실패
-							                    alert("통신에 실패했습니다.");
-							                }
-							            });
-							        }
-							        , minLength : 1
-							        , autoFocus : false
-							        , select : function(evt, ui) {
-							            console.log("전체 data: " + JSON.stringify(ui));
-							            console.log("db Index : " + ui.item);
-							            console.log("검색 데이터 : " + ui.item);
-							        }
-							        , focus : function(evt, ui) {
-							            return false;
-							        }
-							        , close : function(evt) {
-							        }
-							    });
-								</script>
-							</td>
-							<td>
-							<a href="/item/codemaker"><button type="button">코드생성</button></a>
-							</td>
+								value="${itemVO.item_code}" placeholder="ex) ITEM-000000" disabled>
+
 						</tr>
 						<tr>
 							<td>품목명<span style="color: red">*</span> :
