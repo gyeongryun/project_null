@@ -45,6 +45,7 @@ public class IncludesController {
 		
 		return "/includes/footer";
 	}
+
 	
 
 }

@@ -47,6 +47,24 @@ public class ObtainServiceImpl implements ObtainService {
 		return mapper.checkOverlap(vo);
 	}
 
+	@Override
+	public List<ObtainVO> autoOrder_code(String order_code) {
+		
+		return mapper.autoOrder_code(order_code);
+	}
+
+	@Override
+	public List<ObtainVO> autoCont_code(String cont_code) {
+		
+		return mapper.autoCont_code(cont_code);
+	}
+
+	@Override
+	public List<ObtainVO> autoItem_code(String item_code) {
+		
+		return mapper.autoItem_code(item_code);
+	}
+
 
 
 

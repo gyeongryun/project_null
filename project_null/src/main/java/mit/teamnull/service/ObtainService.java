@@ -17,4 +17,11 @@ public interface ObtainService {
 	public int checkOverlap(ObtainVO vo);
 	
 	
+	public List<ObtainVO> autoOrder_code(String order_code);
+	
+	public List<ObtainVO> autoCont_code(String cont_code);
+	
+	public List<ObtainVO> autoItem_code(String item_code);
+	
+	
 }

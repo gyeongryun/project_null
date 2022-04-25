@@ -53,6 +53,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return mapper.pullInfo(order_code);
 	}
 
+	@Override
+	public List<PurchaseVO> autoOrder_code(String order_code) {
+		
+		return mapper.autoOrder_code(order_code);
+	}
+
 
 
 

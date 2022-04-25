@@ -6,6 +6,10 @@
 <html>
 <head>
 <link href="/resources/css/header.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>NULL_계약등록 화면</title>
 </head>
@@ -13,8 +17,47 @@
 	<div id="content">
 		<h1>계약 등록-계약 세부 내용</h1>
 		<form id="searchForm" action="/contract/search" method="post">
-			<input type="search" name="part_name" value="" required="required">
+			<input type="search" name="part_name" value="" required="required" id="searchCont_code">
 			<button type="submit">검색</button>
+			<script>
+		    $("#searchCont_code").autocomplete({
+		        source : function(request, response) {
+		            $.ajax({
+		                  url : "/contsearch/searchCont_code"
+		                , type : "GET"
+		                , dataType : "json"
+		                , data : {keyword : $("#searchCont_code").val()} // 검색 키워드
+		                , success : function(data){ // 성공
+		                    response(
+		                        $.map(data, function(item) {
+		                            return {
+		                                  label : item	//목록에 표시되는 값
+		                                , value : item	//선택 시 input창에 표시되는 값
+		                                , idx : item	// db 인덱스를 담을수 있음 (예제)
+		                            };
+		                        })
+		                    );    //response
+		                }
+		                ,
+		                error : function(){ //실패
+		                    alert("통신에 실패했습니다.");
+		                }
+		            });
+		        }
+		        , minLength : 1
+		        , autoFocus : false
+		        , select : function(evt, ui) {
+		            console.log("전체 data: " + JSON.stringify(ui));
+		            console.log("db Index : " + ui.item);
+		            console.log("검색 데이터 : " + ui.item);
+		        }
+		        , focus : function(evt, ui) {
+		            return false;
+		        }
+		        , close : function(evt) {
+		        }
+		    });
+			</script>	
 		</form>
 		<div>
 			<input type="checkbox" id="menuswitch" checked>
@@ -29,17 +72,137 @@
 							<td>계약서코드<span style="color: red">*</span> :
 							</td>
 							<td><input type="text" name="cont_code"
-								value="${contractVO.cont_code}" required="required"></td>
+								value="${contractVO.cont_code}" required="required" id="autoCont_code">
+																<script>
+							    $("#autoCont_code").autocomplete({
+							        source : function(request, response) {
+							            $.ajax({
+							                  url : "/contsearch/autoCont_code"
+							                , type : "GET"
+							                , dataType : "json"
+							                , data : {keyword : $("#autoCont_code").val()} // 검색 키워드
+							                , success : function(data){ // 성공
+							                    response(
+							                        $.map(data, function(item) {
+							                            return {
+							                                  label : item	//목록에 표시되는 값
+							                                , value : item	//선택 시 input창에 표시되는 값
+							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
+							                            };
+							                        })
+							                    );    //response
+							                }
+							                ,
+							                error : function(){ //실패
+							                    alert("통신에 실패했습니다.");
+							                }
+							            });
+							        }
+							        , minLength : 1
+							        , autoFocus : false
+							        , select : function(evt, ui) {
+							            console.log("전체 data: " + JSON.stringify(ui));
+							            console.log("db Index : " + ui.item);
+							            console.log("검색 데이터 : " + ui.item);
+							        }
+							        , focus : function(evt, ui) {
+							            return false;
+							        }
+							        , close : function(evt) {
+							        }
+							    });
+								</script>	
+							</td>
 						</tr>
 						<tr>
 							<td>품목코드<span style="color: red">*</span> :</td>
 							<td><input type="text" name="item_code"
-								value="${contractVO.item_code}" required></td>
+								value="${contractVO.item_code}" required id="autoItem_code">
+								<script>
+							    $("#autoItem_code").autocomplete({
+							        source : function(request, response) {
+							            $.ajax({
+							                  url : "/contsearch/autoItem_code"
+							                , type : "GET"
+							                , dataType : "json"
+							                , data : {keyword : $("#autoItem_code").val()} // 검색 키워드
+							                , success : function(data){ // 성공
+							                    response(
+							                        $.map(data, function(item) {
+							                            return {
+							                                  label : item	//목록에 표시되는 값
+							                                , value : item	//선택 시 input창에 표시되는 값
+							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
+							                            };
+							                        })
+							                    );    //response
+							                }
+							                ,
+							                error : function(){ //실패
+							                    alert("통신에 실패했습니다.");
+							                }
+							            });
+							        }
+							        , minLength : 1
+							        , autoFocus : false
+							        , select : function(evt, ui) {
+							            console.log("전체 data: " + JSON.stringify(ui));
+							            console.log("db Index : " + ui.item);
+							            console.log("검색 데이터 : " + ui.item);
+							        }
+							        , focus : function(evt, ui) {
+							            return false;
+							        }
+							        , close : function(evt) {
+							        }
+							    });
+								</script>	
+							</td>
 						</tr>
 						<tr>
 							<td>협력업체명<span style="color: red">*</span> :</td>
 							<td><input type="text" name="part_name"
-								value="${contractVO.part_name}" required></td>
+								value="${contractVO.part_name}" required id="autoCpart_name">
+																<script>
+							    $("#autoCpart_name").autocomplete({
+							        source : function(request, response) {
+							            $.ajax({
+							                  url : "/contsearch/autoCpart_name"
+							                , type : "GET"
+							                , dataType : "json"
+							                , data : {keyword : $("#autoCpart_name").val()} // 검색 키워드
+							                , success : function(data){ // 성공
+							                    response(
+							                        $.map(data, function(item) {
+							                            return {
+							                                  label : item	//목록에 표시되는 값
+							                                , value : item	//선택 시 input창에 표시되는 값
+							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
+							                            };
+							                        })
+							                    );    //response
+							                }
+							                ,
+							                error : function(){ //실패
+							                    alert("통신에 실패했습니다.");
+							                }
+							            });
+							        }
+							        , minLength : 1
+							        , autoFocus : false
+							        , select : function(evt, ui) {
+							            console.log("전체 data: " + JSON.stringify(ui));
+							            console.log("db Index : " + ui.item);
+							            console.log("검색 데이터 : " + ui.item);
+							        }
+							        , focus : function(evt, ui) {
+							            return false;
+							        }
+							        , close : function(evt) {
+							        }
+							    });
+								</script>	
+							</td>
 						</tr>
 						<tr>
 							<td>공급가격(단가) :</td>

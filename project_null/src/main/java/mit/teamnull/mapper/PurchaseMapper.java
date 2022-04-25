@@ -21,6 +21,8 @@ public interface PurchaseMapper {
 	
 	public PurchaseVO purchaseOrder(String order_code);
 	
+	public List<PurchaseVO> autoOrder_code(String order_code);
+	
 
 	
 }

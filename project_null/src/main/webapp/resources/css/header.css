@@ -34,7 +34,15 @@ ul a {
 }
 
 
-li {
+li.header{
+	display: inline-block;
+	margin-left: 16px;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 200%;
+}
+
+li.sider{
 	display: inline-block;
 	margin-left: 16px;
 	font-size: 18px;
@@ -50,10 +58,10 @@ li a {
 }
 
 li a:hover {
-	/*color: #597812;*/
+	color: #597812;
 	color: #FFD400;
 	font-weight: normal;
-}
+} 
 
 html {
 	height: 200%;
@@ -185,7 +193,6 @@ input#menuicon:checked + label + div{
 }
 input#menuicon:checked + label{
     z-index: 5;
-/*     left: 250px; */
 }
 /* 사이드바 끝  */
 

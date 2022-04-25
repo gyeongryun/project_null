@@ -1,12 +1,19 @@
 package mit.teamnull.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -58,5 +65,29 @@ public class ItemController {
 
 		return "/procure/item/item_search";
 	}
+
+	/* j쿼리테스트 */
+	@GetMapping("/auto")
+	public String auto() {
+		return "/procure/item/item_AutoComp";
+	}
+
+	/*
+	 * 아이템코드자동완성
+	 * 
+	 * @GetMapping("/codemaker") public String codemaker() {
+	 * 
+	 * Random rd = new Random();//랜덤 객체 생성
+	 * 
+	 * StringBuffer bf= new StringBuffer();
+	 * 
+	 * for(int i=0;i<6;i++){ if(rd.nextBoolean()){
+	 * bf.append((char)((int)(rd.nextInt(26))+65)); }else{
+	 * bf.append((rd.nextInt(10))); } }
+	 * System.out.println("---------------------------"); String rancode =
+	 * "ITEM-"+bf;
+	 * 
+	 * return "/procure/item/item_home?item_code="+rancode; }
+	 */
 
 }

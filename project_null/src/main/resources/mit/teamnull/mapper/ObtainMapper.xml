@@ -26,11 +26,11 @@
 	
 	<select id="search" resultType="mit.teamnull.domain.ObtainVO">
    <![CDATA[
-	SELECT order_info.order_code,order_info.cont_code,order_info.item_code,item.item_name,item_mrp,item_require,item_prodate,item_due
-	FROM item,order_info
-	where order_info.order_code=
-	(SELECT order_code FROM order_info WHERE order_code LIKE '%'||#{order_code}||'%')
-	AND order_info.item_code=item.item_code
+		SELECT od.order_code, od.cont_code, od.item_code, it.item_name, 
+		    item_mrp, item_require, item_prodate, item_due 
+		FROM item it,order_info od
+		WHERE od.item_code=it.item_code
+		    AND order_code LIKE '%'||#{order_code}||'%'
    ]]>
 	</select>
 	
@@ -53,7 +53,25 @@
 		WHERE order_code = #{order_code}
 	</select>
 	
-
+	
+	<select id="autoOrder_code" resultType="string">
+		SELECT DISTINCT order_code
+		FROM order_info
+		WHERE ROWNUM &lt; = 4
+		    AND order_code LIKE UPPER(#{order_code})||'%'
+	</select>
+	<select id="autoCont_code" resultType="string">
+		SELECT DISTINCT cont_code
+		FROM order_info
+		WHERE ROWNUM &lt; = 4
+		    AND cont_code LIKE UPPER(#{cont_code})||'%'
+	</select>
+	<select id="autoItem_code" resultType="string">
+		SELECT DISTINCT item_code
+		FROM order_info
+		WHERE ROWNUM &lt; = 4
+		    AND item_code LIKE UPPER(#{item_code})||'%'
+	</select>
 	
 	
 </mapper>

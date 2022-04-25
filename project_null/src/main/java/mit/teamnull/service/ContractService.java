@@ -24,4 +24,16 @@ public interface ContractService {
 	public int checkOverlapCont(ContractVO vo);
 	
 	public ContractVO verificationCont(String cont_code);
+	
+	/* 오토컴플릿 */
+	public List<PartnerVO> autoPart_name(String part_name);
+	
+	public List<PartnerVO> autoPart_status(String part_status);
+	
+	public List<ContractVO> autoCont_code(String cont_code);
+	
+	public List<ContractVO> autoItem_code(String item_code);
+	
+	public List<ContractVO> autoCpart_name(String part_name);
+	
 }

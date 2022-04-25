@@ -19,6 +19,6 @@ public interface PurchaseService {
 	
 	public PurchaseVO pullInfo(String order_code);
 	
-
+	public List<PurchaseVO> autoOrder_code(String order_code);
 	
 }

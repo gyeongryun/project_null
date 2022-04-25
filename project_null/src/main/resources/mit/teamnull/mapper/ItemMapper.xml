@@ -7,7 +7,7 @@
 <!-- item_code, item_name, item_material, item_stand, item_product, item_draw -->
 	<select id="insert">
    <![CDATA[
-      INSERT INTO item VALUES (#{item_code},#{item_name},#{item_material},#{item_stand},#{item_product},#{item_draw})
+      INSERT INTO item VALUES (UPPER(#{item_code}),#{item_name},#{item_material},#{item_stand},#{item_product},#{item_draw})
    ]]>
 	</select>
 	
@@ -38,5 +38,42 @@
 		SELECT * FROM item WHERE item_code LIKE '%'||#{item_code}||'%'
 	</select>
 	
+	
+<!-- 	<select id="selectTest" parameterType="map" resultType="map">
+	SELECT item_code
+	FROM item
+	WHERE item_code  LIKE '%'|| #{value}} || '%'
+	</select> -->
+	
+	<select id="autoItem_code" resultType="string">
+		SELECT item_code 
+		FROM item
+		WHERE ROWNUM &lt; = 4
+		AND item_code LIKE UPPER(#{item_code})||'%'
+	</select>
+	<select id="autoItem_name" resultType="string">
+		SELECT DISTINCT item_name 
+		FROM item
+		WHERE ROWNUM &lt; = 4
+		AND item_name LIKE UPPER(#{item_name})||'%'
+	</select>
+	<select id="autoItem_material" resultType="string">
+		SELECT DISTINCT item_material 
+		FROM item
+		WHERE ROWNUM &lt; = 4
+		AND item_material LIKE UPPER(#{item_material})||'%'
+	</select>
+	<select id="autoItem_stand" resultType="string">
+		SELECT DISTINCT item_stand 
+		FROM item
+		WHERE ROWNUM &lt; = 4
+		AND item_stand LIKE UPPER(#{item_stand})||'%'
+	</select>
+	<select id="autoItem_product" resultType="string">
+		SELECT DISTINCT item_product 
+		FROM item
+		WHERE ROWNUM &lt; = 4
+		AND item_product LIKE UPPER(#{item_product})||'%'
+	</select>
 	
 </mapper>

@@ -6,6 +6,10 @@
 <html>
 <head>
 <link href="/resources/css/header.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>NULL_구매발주서발행 화면</title>
 </head>
@@ -13,11 +17,50 @@
 	<div id="content">
 		<h1>구매 발주서 발행</h1>
 		<form id="searchForm" action="/purchase/search" method="post">
-			<input type="search" name="order_code" value="${search.order_code}" required="required">
+			<input type="search" name="order_code" value="${search.order_code}" required="required" id="searchOrder_code">
+			<script>
+		    $("#searchOrder_code").autocomplete({
+		        source : function(request, response) {
+		            $.ajax({
+		                  url : "/pursearch/searchOrder_code"
+		                , type : "GET"
+		                , dataType : "json"
+		                , data : {keyword : $("#searchOrder_code").val()} // 검색 키워드
+		                , success : function(data){ // 성공
+		                    response(
+		                        $.map(data, function(item) {
+		                            return {
+		                                  label : item	//목록에 표시되는 값
+		                                , value : item	//선택 시 input창에 표시되는 값
+		                                , idx : item	// db 인덱스를 담을수 있음 (예제)
+		                            };
+		                        })
+		                    );    //response
+		                }
+		                ,
+		                error : function(){ //실패
+		                    alert("통신에 실패했습니다.");
+		                }
+		            });
+		        }
+		        , minLength : 1
+		        , autoFocus : false
+		        , select : function(evt, ui) {
+		            console.log("전체 data: " + JSON.stringify(ui));
+		            console.log("db Index : " + ui.item);
+		            console.log("검색 데이터 : " + ui.item);
+		        }
+		        , focus : function(evt, ui) {
+		            return false;
+		        }
+		        , close : function(evt) {
+		        }
+		    });
+			</script>	
 			<button type="submit">검색</button>
 		</form>
 		<div>
-			<input type="checkbox" id="menuswitch">
+			<input type="checkbox" id="menuswitch" checked>
 			<label for="menuswitch">
 				<img src="/resources/img/등록버튼.png" height=40px align="right" id="registerbutton">
 			</label>
@@ -28,7 +71,47 @@
 							<td>발주서코드<span style="color: red">*</span> :
 							</td>
 							<td><input type="text" name="order_code"
-								value="${load.order_code}" required="required"></td>
+								value="${onelist.order_code}" required="required" id="autoOrder_code">
+								<script>
+							    $("#autoOrder_code").autocomplete({
+							        source : function(request, response) {
+							            $.ajax({
+							                  url : "/pursearch/autoOrder_code"
+							                , type : "GET"
+							                , dataType : "json"
+							                , data : {keyword : $("#autoOrder_code").val()} // 검색 키워드
+							                , success : function(data){ // 성공
+							                    response(
+							                        $.map(data, function(item) {
+							                            return {
+							                                  label : item	//목록에 표시되는 값
+							                                , value : item	//선택 시 input창에 표시되는 값
+							                                , idx : item	// db 인덱스를 담을수 있음 (예제)
+							                            };
+							                        })
+							                    );    //response
+							                }
+							                ,
+							                error : function(){ //실패
+							                    alert("통신에 실패했습니다.");
+							                }
+							            });
+							        }
+							        , minLength : 1
+							        , autoFocus : false
+							        , select : function(evt, ui) {
+							            console.log("전체 data: " + JSON.stringify(ui));
+							            console.log("db Index : " + ui.item);
+							            console.log("검색 데이터 : " + ui.item);
+							        }
+							        , focus : function(evt, ui) {
+							            return false;
+							        }
+							        , close : function(evt) {
+							        }
+							    });
+								</script>
+							</td>
 						</tr>
 						<tr>
 							<td>계약서코드<span style="color: yellow">*</span> :
@@ -85,10 +168,9 @@
 					<label for="submit_btn">
 						<img src="/resources/img/저장버튼.png" height=40px align="right">
 					</label>
-					<button id="print_btn" type="button">출력</button>
-					<label for="ptint_btn">
+					<a href="/purchase/print?order_code=${load.order_code}">
 						<img src="/resources/img/출력버튼.png" height=40px align="right">
-					</label>
+					</a>
 				</form>
 			</div>
 		</div>

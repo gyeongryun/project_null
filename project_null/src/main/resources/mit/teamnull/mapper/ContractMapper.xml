@@ -81,4 +81,36 @@
 	   ]]>
 	</select> -->
 	
+	
+	<select id="autoPart_name" resultType="string">
+		SELECT DISTINCT part_name 
+		FROM partner 
+		WHERE ROWNUM &lt; = 4 
+			AND part_name LIKE UPPER(#{part_name})||'%'
+	</select>
+	<select id="autoPart_status" resultType="string">
+		SELECT DISTINCT part_status 
+		FROM partner 
+		WHERE ROWNUM &lt; = 4 
+			AND part_status LIKE UPPER(#{part_status})||'%'
+	</select>
+	
+	<select id="autoCont_code" resultType="string">
+	SELECT DISTINCT cont_code 
+	FROM contract 
+	WHERE ROWNUM &lt; = 4 
+	    AND cont_code LIKE UPPER(#{cont_code})||'%'
+	</select>
+	<select id="autoItem_code" resultType="string">
+	SELECT DISTINCT item_code 
+	FROM contract 
+	WHERE ROWNUM &lt; = 4 
+	    AND item_code LIKE UPPER(#{item_code})||'%'
+	</select>
+	<select id="autoCpart_name" resultType="string">
+	SELECT DISTINCT part_name 
+	FROM contract 
+	WHERE ROWNUM &lt; = 4 
+	    AND part_name LIKE UPPER(#{part_name})||'%'
+	</select>
 </mapper>

@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import mit.teamnull.domain.ContractVO;
 import mit.teamnull.domain.PartnerVO;
-import mit.teamnull.domain.PurchaseVO;
 import mit.teamnull.service.ContractService;
 
 @Controller
@@ -31,7 +30,7 @@ public class ContractController {
 
 	}
 	
-	@PostMapping("/part")
+	@GetMapping("/part")
 	public String contractPart() {
 		
 		return "/procure/contract/contract_part";

@@ -42,6 +42,36 @@ public class ItemServiceImpl implements ItemService {
 		return mapper.search(item_code);
 	}
 
+	@Override
+	public List<ItemVO> autoItem_code(String item_code) {
+		
+		return mapper.autoItem_code(item_code);
+	}
+
+	@Override
+	public List<ItemVO> autoItem_name(String item_name) {
+		
+		return mapper.autoItem_name(item_name);
+	}
+
+	@Override
+	public List<ItemVO> autoItem_material(String item_material) {
+		
+		return mapper.autoItem_material(item_material);
+	}
+
+	@Override
+	public List<ItemVO> autoItem_stand(String item_stand) {
+		
+		return mapper.autoItem_stand(item_stand);
+	}
+
+	@Override
+	public List<ItemVO> autoItem_product(String item_product) {
+		
+		return mapper.autoItem_product(item_product);
+	}
+
 
 
 

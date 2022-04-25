@@ -45,14 +45,13 @@
 	</select>
 	
 	<select id="search" resultType="mit.teamnull.domain.PurchaseVO">
-		SELECT DISTINCT order_info.order_code,order_info.cont_code,
-			contract.part_name,order_info.item_code,item.item_name,item_mrp,
-			item_require,item_prodate,item_due
-		FROM item,order_info,contract
-		WHERE order_info.order_code=
-			(SELECT order_code FROM order_info WHERE order_code 
-				LIKE '%'||#{order_code}||'%')
-			AND order_info.item_code=item.item_code
+		SELECT od.order_code,od.cont_code,
+		    co.part_name,od.item_code,it.item_name,item_mrp,
+		    item_require,item_prodate,item_due
+		FROM item it,order_info od,contract co
+		WHERE od.item_code=it.item_code
+		    AND od.cont_code=co.cont_code
+		    AND order_code LIKE '%'||#{order_code}||'%'
 	</select>
 	
 	<select id="pullInfo" resultType="mit.teamnull.domain.PurchaseVO">
@@ -84,4 +83,12 @@
 		AND order_code=#{order_code}
 	</select>
 	
+	
+	
+	<select id="autoOrder_code" resultType="string">
+		SELECT DISTINCT order_code
+		FROM order_info
+		WHERE ROWNUM &lt; = 4
+		    AND order_code LIKE UPPER(#{order_code})||'%'
+	</select>
 </mapper>

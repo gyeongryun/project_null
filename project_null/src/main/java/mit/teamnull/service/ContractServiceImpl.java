@@ -59,6 +59,36 @@ public class ContractServiceImpl implements ContractService {
 		return mapper.verificationCont(cont_code);
 	}
 
+	@Override
+	public List<PartnerVO> autoPart_name(String part_name) {
+		
+		return mapper.autoPart_name(part_name);
+	}
+
+	@Override
+	public List<PartnerVO> autoPart_status(String part_status) {
+		
+		return mapper.autoPart_status(part_status);
+	}
+
+	@Override
+	public List<ContractVO> autoCont_code(String cont_code) {
+		
+		return mapper.autoCont_code(cont_code);
+	}
+
+	@Override
+	public List<ContractVO> autoItem_code(String item_code) {
+		
+		return mapper.autoItem_code(item_code);
+	}
+
+	@Override
+	public List<ContractVO> autoCpart_name(String part_name) {
+		
+		return mapper.autoCpart_name(part_name);
+	}
+
 	
 
 

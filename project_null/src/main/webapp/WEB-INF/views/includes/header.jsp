@@ -18,11 +18,11 @@
 		<nav>
 			<ul>
 
-				<li><a href="#1">관리메뉴</a></li>
-				<li><a href="#2">판매메뉴</a></li>
-				<li><a href="#3">제조메뉴</a></li>
-				<li><a href="/procure/home">조달메뉴</a></li>
-				<li><a href="#5">지원메뉴</a></li>
+				<li class="header"><a href="#1">관리메뉴</a></li>
+				<li class="header"><a href="#2">판매메뉴</a></li>
+				<li class="header"><a href="#3">제조메뉴</a></li>
+				<li class="header"><a href="/procure/home">조달메뉴</a></li>
+				<li class="header"><a href="#5">지원메뉴</a></li>
 			</ul>
 		</nav>
 
@@ -41,41 +41,41 @@
 					<a href="/procure/home"><span class="material-icons">arrow_forward_ios</span>
 						<span class="menu">조달관리</span></a>
 					<br>
-					<li><a href="/item/home">품목 등록 정보</a></li>
+					<li class="sider"><a href="/item/home">품목 등록 정보</a></li>
 					<br>
-					<li><a href="/contract/home">계약 등록</a></li>
+					<li class="sider"><a href="/contract/home">계약 등록</a></li>
 					<br>
-					<li><a href="/obtain/home">조달 계획 등록</a></li>
+					<li class="sider"><a href="/obtain/home">조달 계획 등록</a></li>
 					<br>
 				</ul>
 				<br>
 				<ul>
-					<a href="#"> <span class="material-icons">arrow_forward_ios</span>
+					<a href="/purchase/home"> <span class="material-icons">arrow_forward_ios</span>
 						<span class="menu">발주관리</span></a>
 					<br>
-					<li><a href="/purchase/home">구매 발주서 발행</a></li>
+					<li class="sider"><a href="/purchase/home">구매 발주서 발행</a></li>
 					<br>
-					<li><a href="#">진척 검수 처리</a></li>
+					<li class="sider"><a href="#6">진척 검수 처리</a></li>
 					<br>
-					<li><a href="#">입고 처리</a></li>
+					<li class="sider"><a href="#7">입고 처리</a></li>
 					<br>
-					<li><a href="#">거래 명세서 발행</a></li>
+					<li class="sider"><a href="#8">거래 명세서 발행</a></li>
 					<br>
-					<li><a href="#">구매 발주서 마감</a></li>
+					<li class="sider"><a href="#">구매 발주서 마감</a></li>
 					<br>
-					<li><a href="#">발주 진행 현황 리포트</a></li>
+					<li class="sider"><a href="#9">발주 진행 현황 리포트</a></li>
 					<br>
 				</ul>
 				<br>
 				<ul>
-					<a href="#"> <span class="material-icons">arrow_forward_ios</span>
+					<a href="#10"> <span class="material-icons">arrow_forward_ios</span>
 						<span class="menu">자재관리</span></a>
 					<br>
-					<li><a href="#">출고 처리</a></li>
+					<li class="sider"><a href="#11">출고 처리</a></li>
 					<br>
-					<li><a href="#">재고 산출</a></li>
+					<li class="sider"><a href="#12">재고 산출</a></li>
 					<br>
-					<li><a href="#">재고 금액 현황 리포트</a></li>
+					<li class="sider"><a href="#13">재고 금액 현황 리포트</a></li>
 					<br>
 				</ul>
 			</div>
