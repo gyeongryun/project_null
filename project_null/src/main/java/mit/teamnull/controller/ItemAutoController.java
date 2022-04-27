@@ -32,17 +32,16 @@ public class ItemAutoController {
 		Gson gson = new Gson();
 		return gson.toJson(items);
 	}
+	
+	@GetMapping(value = "/loadItem", produces="text/plain; charset=UTF-8")
+	public String getItem(String item_code, Model model) {
+		ItemVO items = service.getItem(item_code);
+		log.info(items);
+		Gson gson = new Gson();
+		return gson.toJson(items);
+	}
 
-	/*
-	 * @GetMapping(value = "/json", produces="text/plain; charset=UTF-8") public
-	 * String json(Locale locale, Model model) {
-	 * 
-	 * String[] array = { "엽기떡볶이1", "신전떡볶이2", "걸작떡볶이3", "신당동떡볶이4" }; // 배열 생성
-	 * 
-	 * Gson gson = new Gson();
-	 * 
-	 * return gson.toJson(array); // 배열 반환 }
-	 */
+
 	
 	
 	@GetMapping(value = "/autoItem_code", produces="text/plain; charset=UTF-8")

@@ -15,6 +15,8 @@ public interface ItemMapper {
 	
 	public int checkOverlap(String item_code);
 	
+	public int countName(String item_name);
+	
 	public List<ItemVO> search(String item_code);
 	
 	public List<ItemVO> autoItem_code(String item_code);

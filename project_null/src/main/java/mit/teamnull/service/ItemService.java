@@ -16,6 +16,8 @@ public interface ItemService {
 	
 	/* public int checkOverlap(ItemVO vo); */
 	
+	public int countName(String item_name);
+	
 	public List<ItemVO> search(String item_code);
 	
 	public List<ItemVO> autoItem_code(String item_code);

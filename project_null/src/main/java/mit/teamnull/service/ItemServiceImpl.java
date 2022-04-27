@@ -68,6 +68,12 @@ public class ItemServiceImpl implements ItemService {
 	 * @Override public int checkOverlap(ItemVO vo) { return
 	 * mapper.checkOverlap(vo); }
 	 */
+	
+	@Override
+	public int countName(String item_name) {
+		
+		return mapper.countName(item_name);
+	}
 
 	@Override
 	public List<ItemVO> search(String item_code) {
@@ -103,5 +109,7 @@ public class ItemServiceImpl implements ItemService {
 
 		return mapper.autoItem_product(item_product);
 	}
+
+
 
 }

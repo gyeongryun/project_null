@@ -56,5 +56,12 @@ public class QuizController {
 		return "/includes/numlist";
 	}
 	
+//	@GetMapping("/test1")
+//	public String test1(int a, Model md) {
+//		
+//		md.addAttribute("a", a);
+//		
+//		return "/includes/test";
+//	}
 	
 }

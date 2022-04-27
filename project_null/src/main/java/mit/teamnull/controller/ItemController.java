@@ -44,13 +44,27 @@ public class ItemController {
 	@PostMapping("/insert")
 	public String insert(ItemVO vo, Model model) {
 		log.info(vo);
-		/*
-		 * int cnt = service.checkOverlap(vo); if (cnt == 0) {
-		 */
+
+			
+			
+		int cnt = service.countName(vo.getItem_name());
+		if(cnt==0) { 
 			service.insert(vo);
-/*		} else {
-			service.update(vo);
-		}*/
+			}else {
+			model.addAttribute("msg", "중복되는 품목명이 "+cnt+"개 있습니다. 등록하시겠습니까?");
+		}
+
+		ItemVO item = service.getItem(vo.getItem_code());
+		model.addAttribute("item", item);
+
+		return "/procure/item/item_home";
+	}
+	
+	@PostMapping("/modify")
+	public String modify(ItemVO vo, Model model) {
+		log.info(vo);
+		
+		service.update(vo);
 
 		ItemVO item = service.getItem(vo.getItem_code());
 		model.addAttribute("item", item);
@@ -59,13 +73,41 @@ public class ItemController {
 	}
 
 	@PostMapping("/search")
-	public String search(ItemVO vo, Model model) {
+	public String search(ItemVO vo, Model model, String flag) {
+		log.info("어디서 이페이지를?" + flag);
 		log.info("검색한 코드는" + vo);
 		List<ItemVO> resultList = service.search(vo.getItem_code());
 		model.addAttribute("result", resultList);
-
+		if(flag.equals("new")) {
+			model.addAttribute("itemVO", resultList.get(0));
+		}
 		return "/procure/item/item_search";
 	}
+	
+	//수정용 클릭
+	@GetMapping("/moClick")
+	public String moClick(ItemVO vo, Model model) {
+		log.info("클릭한 코드는" + vo);
+		ItemVO resultList = service.getItem(vo.getItem_code());
+		model.addAttribute("searchResult", resultList);
+
+		
+		return "/procure/item/item_search";
+	}
+	
+	
+	
+	
+//	@GetMapping("/searchClick")
+//	public String searchClick(ItemVO vo, Model model) {
+//		log.info("검색한 코드는" + vo);
+//		List<ItemVO> resultList = service.search(vo.getItem_code());
+//		model.addAttribute("result", resultList);
+//		ItemVO resultList2 = service.getItem(vo.getItem_code());
+//		model.addAttribute("itemVO", resultList2);
+//		
+//		return "/procure/item/search";
+//	}
 
 	/* j쿼리테스트 */
 	@GetMapping("/auto")
@@ -73,22 +115,6 @@ public class ItemController {
 		return "/procure/item/item_AutoComp";
 	}
 
-	/*
-	 * 아이템코드자동완성
-	 * 
-	 * @GetMapping("/codemaker") public String codemaker() {
-	 * 
-	 * Random rd = new Random();//랜덤 객체 생성
-	 * 
-	 * StringBuffer bf= new StringBuffer();
-	 * 
-	 * for(int i=0;i<6;i++){ if(rd.nextBoolean()){
-	 * bf.append((char)((int)(rd.nextInt(26))+65)); }else{
-	 * bf.append((rd.nextInt(10))); } }
-	 * System.out.println("---------------------------"); String rancode =
-	 * "ITEM-"+bf;
-	 * 
-	 * return "/procure/item/item_home?item_code="+rancode; }
-	 */
+
 
 }

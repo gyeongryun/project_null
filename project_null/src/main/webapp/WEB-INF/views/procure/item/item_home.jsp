@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="content">
-		<h1>품목 등록 정보</h1>
+		<h1>품목 등록 정보 - 신규 등록</h1>
 		<form id="searchForm" action="/item/search" method="post">
 			<input type="search" name="item_code" value="${search.item_code}" required="required" id="autoSearch">
 				<script>
@@ -279,7 +279,7 @@
 			</div>
 		</div>
 
-		<hr>
+		<hr style="margin-top: 40px;">
 		<!-- item_code, item_name, item_material, item_stand, item_product, item_draw -->
 		<br>
 		<table class="table table-bordered">
@@ -295,7 +295,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>${item.item_code }</td>
+					<td><a href="#" id="gift">${item.item_code}</a></td>
 					<td>${item.item_name }</td>
 					<td>${item.item_material }</td>
 					<td>${item.item_stand }</td>
@@ -304,6 +304,38 @@
 				</tr>
 			</tbody>
 		</table>
+		<form id="goCode"  style="display: none" action="/item/search" method="post">
+			<input type="search" name="item_code" value="${itemVO.item_code}">
+			<input type="text" name="flag" value="new">
+		</form>
 	</div>
 </body>
+<script>
+
+$("#gift").on("click", function(e){   
+	e.preventDefault();
+	console.log("아이템코드 클릭했다.");
+	/*
+	가야될 주소는 http://localhost:8081/item/search
+	post로 데이터는 item_code 가지고 가면되죠
+
+	*/
+	goCode.submit();
+
+
+	
+	
+
+	
+});
+
+
+
+</script>
+<script type="text/javascript">
+	var message = "${msg}";
+	var url = "${url}";
+	alert(message);
+	document.location.href = url;
+</script>
 </html>
