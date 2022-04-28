@@ -308,6 +308,14 @@
 			<input type="search" name="item_code" value="${itemVO.item_code}">
 			<input type="text" name="flag" value="new">
 		</form>
+		<form id="goDirect"  style="display: none" action="/item/insertDirect" method="post">
+			<input type="text" name="item_name" value="${itemVO.item_name}">
+			<input type="text" name="item_material" value="${itemVO.item_material}">
+			<input type="text" name="item_stand" value="${itemVO.item_stand}">
+			<input type="text" name="item_product" value="${itemVO.item_product}">
+			<input type="text" name="item_draw" value="${itemVO.item_draw}">
+			
+		</form>
 	</div>
 </body>
 <script>
@@ -332,10 +340,21 @@ $("#gift").on("click", function(e){
 
 
 </script>
-<script type="text/javascript">
-	var message = "${msg}";
-	var url = "${url}";
-	alert(message);
-	document.location.href = url;
+
+<script>
+var msg1="${msg}"; 
+console.log("보내온값"+msg1)
+if(msg1 != ""){  //   if( !=null)
+	var check=confirm("${msg}");
+	console.log("당신의 선택은"+check);
+	
+	//check 값을 이용해서 true면 등록하고
+	if(check==true){
+		//window.location.href = "/item/insertDirect";
+		goDirect.submit();
+	}else{
+	//아니면 암것도 하지 말자
+	}
+}
 </script>
 </html>

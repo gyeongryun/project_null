@@ -44,19 +44,28 @@ public class ItemController {
 	@PostMapping("/insert")
 	public String insert(ItemVO vo, Model model) {
 		log.info(vo);
-
-			
 			
 		int cnt = service.countName(vo.getItem_name());
 		if(cnt==0) { 
 			service.insert(vo);
-			}else {
+			ItemVO item = service.getItem(vo.getItem_code());
+			model.addAttribute("item", item);
+		}else {
 			model.addAttribute("msg", "중복되는 품목명이 "+cnt+"개 있습니다. 등록하시겠습니까?");
 		}
 
+
+		return "/procure/item/item_home";
+	}
+	
+	@PostMapping("/insertDirect")
+	public String insertDirect(ItemVO vo, Model model) {
+		log.info(vo);
+		
+		service.insert(vo);
 		ItemVO item = service.getItem(vo.getItem_code());
 		model.addAttribute("item", item);
-
+		
 		return "/procure/item/item_home";
 	}
 	
