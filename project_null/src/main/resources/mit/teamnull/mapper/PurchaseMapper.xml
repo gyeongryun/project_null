@@ -51,7 +51,7 @@
 		FROM item it,order_info od,contract co
 		WHERE co.item_code=it.item_code
 		    AND od.cont_code=co.cont_code
-		    AND order_code LIKE '%'||#{order_code}||'%'
+		    AND order_code LIKE UPPER('%'||#{order_code}||'%')
 	</select>
 	
 	<select id="pullInfo" resultType="mit.teamnull.domain.PurchaseVO">

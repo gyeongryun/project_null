@@ -29,11 +29,12 @@
 	
 	<select id="search" resultType="mit.teamnull.domain.ObtainVO">
    <![CDATA[
-		SELECT od.order_code, od.cont_code, od.item_code, it.item_name, 
-		    item_mrp, item_require, item_prodate, item_due 
-		FROM item it,order_info od
-		WHERE od.item_code=it.item_code
-		    AND order_code LIKE '%'||#{order_code}||'%'
+	SELECT od.order_code, od.cont_code, it.item_code, it.item_name, 
+		item_mrp, item_require, item_prodate, item_due
+	FROM order_info od, contract co, item it
+	WHERE od.cont_code=co.cont_code
+		AND co.item_code=it.item_code
+		AND od.order_code LIKE UPPER('%'||#{order_code}||'%')
    ]]>
 	</select>
 	

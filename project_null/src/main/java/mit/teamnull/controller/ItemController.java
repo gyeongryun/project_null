@@ -87,8 +87,10 @@ public class ItemController {
 		log.info("검색한 코드는" + vo);
 		List<ItemVO> resultList = service.search(vo.getItem_code());
 		model.addAttribute("result", resultList);
-		if(flag.equals("new")) {
-			model.addAttribute("itemVO", resultList.get(0));
+		if(flag !=null) {
+			if(flag.equals("new")) {
+				model.addAttribute("itemVO", resultList.get(0));
+			}
 		}
 		return "/procure/item/item_search";
 	}
