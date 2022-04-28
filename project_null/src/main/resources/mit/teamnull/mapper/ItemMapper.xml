@@ -13,7 +13,7 @@
 	
 	<select id="getItem" resultType="mit.teamnull.domain.ItemVO">
    <![CDATA[
-      SELECT * FROM item WHERE item_code = (#{item_code})
+      SELECT * FROM item WHERE item_code = UPPER(#{item_code})
    ]]>
 	</select>
 	
@@ -40,7 +40,7 @@
 	</select>
 	
 	<select id="search" resultType="mit.teamnull.domain.ItemVO">
-		SELECT * FROM item WHERE item_code LIKE '%'||#{item_code}||'%'
+		SELECT * FROM item WHERE item_code LIKE UPPER('%'||#{item_code}||'%')
 	</select>
 	
 	
